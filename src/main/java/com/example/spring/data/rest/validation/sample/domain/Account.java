@@ -3,10 +3,7 @@ package com.example.spring.data.rest.validation.sample.domain;
 import com.example.spring.data.rest.validation.sample.validation.groups.Remove;
 import com.example.spring.data.rest.validation.sample.validation.groups.Update;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,7 +19,7 @@ public class Account extends AbstractEntity {
     private String alias;
 
     @NotNull(groups = Update.class)
-    @ManyToOne(cascade = CascadeType.PERSIST, optional = false)
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = false, fetch = FetchType.LAZY)
     private User user;
 
     @JsonIgnore
