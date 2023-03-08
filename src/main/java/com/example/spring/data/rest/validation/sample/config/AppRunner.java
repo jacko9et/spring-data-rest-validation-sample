@@ -18,6 +18,7 @@ public class AppRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         Account account = new Account();
         account.setAlias("admin");
+        account.setType("username");
         accountRepository.save(account);
     }
 }
